@@ -34,8 +34,4 @@ drwxr-xr-x 2 walshbr ohsu 4096 Jun 11 19:01 bwa-0.7.4
        <requirement type="package" version="0.7.9"> </requirement>
 +      <container type="docker">ccc.docker/bwa</container>
       </requirements>
-    #/tools/gatk/gatk2_macros.xml
-       <requirement type="package" version="0.1.19">samtools</requirement>
-       <requirement type="set_environment">GATK2_PATH</requirement>
-       <requirement type="set_environment">GATK2_SITE_OPTIONS</requirement>
-+      <container type="docker">ccc.docker/gatk</container>
+  ```
