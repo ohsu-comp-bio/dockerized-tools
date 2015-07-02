@@ -67,7 +67,7 @@ This document outlines the installation of Docker clients (v1.6), a Docker regis
   export HTTP_PROXY HTTPS_PROXY http_proxy https_proxy no_proxy NO_PROXY
   other_args="-g=/mnt/app_hdd/docker --insecure-registry ccc.docker"
   ```
-
+  _Note:_ for background on the contents of the directory see http://stackoverflow.com/questions/21016210/function-of-docker-directory-structure-in-var-lib-docker
 
 
 
