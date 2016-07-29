@@ -41,7 +41,7 @@ RUN curl -L -o bin/maf2annovar.pl http://www.openbioinformatics.org/annovar/down
 RUN chmod 755 bin/*
 
 EXPOSE 8080
-WORKDIR /output/
-VOLUME /output/
+WORKDIR /home/
+VOLUME /home/
 
 CMD ["/bin/bash"]

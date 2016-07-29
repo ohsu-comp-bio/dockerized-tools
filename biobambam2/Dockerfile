@@ -35,6 +35,6 @@ RUN curl -ksSL -o tmp.tar.gz --retry 10 https://github.com/gt1/biobambam2/releas
     cp -r share/* /usr/local/share/. && \
     rm -rf *
 
-WORKDIR /output/
-VOLUME /output/
+WORKDIR /home/
+VOLUME /home/
 CMD /bin/bash
