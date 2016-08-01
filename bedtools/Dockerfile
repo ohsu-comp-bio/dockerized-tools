@@ -6,7 +6,7 @@
 # Software Version: 2.26.0
 # Description:      The bedtools utilities are a swiss-army knife of tools for 
 #                   a wide-range of genomics analysis tasks. The most widely-used
-#                    tools enable genome arithmetic: that is, set theory on the genome.
+#                   tools enable genome arithmetic: that is, set theory on the genome.
 # Website:          https://github.com/arq5x/bedtools
 # Base Image:       ubuntu 14.04
 # Pull Cmd:         docker pull ccc/bedtools
