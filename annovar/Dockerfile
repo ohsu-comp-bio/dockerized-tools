@@ -22,6 +22,9 @@ RUN apt-get update && \
     build-essential \
     libwww-perl \
     curl \
+    gzip \
+    unzip \
+    tar \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
