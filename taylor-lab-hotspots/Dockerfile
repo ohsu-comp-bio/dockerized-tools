@@ -85,8 +85,8 @@ RUN curl -L -o tmp.tar.gz https://github.com/arq5x/bedtools2/releases/download/v
 
 # replace hardcoded path
 # during runtime you must mount this the following file at this location:
-# /mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz
-RUN sed -i 's/\/opt\/common\/CentOS_6-dev\/vep\/v81\/homo_sapiens\/81_GRCh37\/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa/\/mnt\/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz/g' /home/make_trinuc_maf.py
+# /mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa
+RUN sed -i 's/\/opt\/common\/CentOS_6-dev\/vep\/v81\/homo_sapiens\/81_GRCh37\/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa/\/mnt\/Homo_sapiens.GRCh37.dna.primary_assembly.fa/g' /home/make_trinuc_maf.py
 
 WORKDIR /home/
 VOLUME /home/
