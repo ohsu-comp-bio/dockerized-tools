@@ -76,17 +76,19 @@ RUN curl -L -o tmp.tar.gz https://github.com/arq5x/bedtools2/releases/download/v
     cd /tmp/ && \
     rm -rf *
 
-WORKDIR /opt/
-
-RUN mkdir -p vep/grch37/release-84/fasta/homo_sapiens/dna/ && \
-    cd vep/grch37/release-84/fasta/homo_sapiens/dna/ && \
-    curl -L -o Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz http://ftp.ensembl.org/pub/grch37/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz && \
-    gunzip Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz
+# download required resource
+# WORKDIR /opt/
+# RUN mkdir -p vep/grch37/release-84/fasta/homo_sapiens/dna/ && \
+#     cd vep/grch37/release-84/fasta/homo_sapiens/dna/ && \
+#     curl -L -o Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz http://ftp.ensembl.org/pub/grch37/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz && \
+#     gunzip Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz
 
 # replace hardcoded path
-WORKDIR /home/
-RUN sed -i 's/\/opt\/common\/CentOS_6-dev\/vep\/v81\/homo_sapiens\/81_GRCh37\/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa/\/opt\/vep\/grch37\/release-84\/fasta\/homo_sapiens\/dna\/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz/g' make_trinuc_maf.py
+# during runtime you must mount this the following file at this location:
+# /mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz
+RUN sed -i 's/\/opt\/common\/CentOS_6-dev\/vep\/v81\/homo_sapiens\/81_GRCh37\/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa/\/mnt\/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz/g' /home/make_trinuc_maf.py
 
+WORKDIR /home/
 VOLUME /home/
 
-CMD ["cat", "README.md"]
+CMD ["./hotspot_algo.R"]

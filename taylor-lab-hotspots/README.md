@@ -15,9 +15,11 @@ mutability, gene-specific mutation rates, and major expected patterns of hotspot
     docker build -t taylor-lab-hotspots
 
 #### Usage:
+This script requires `Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz` which can be downloaded [here](http://ftp.ensembl.org/pub/grch37/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz). 
+At runtime you must mount this file into the container at `/mnt/`.
 
 ```
-docker run taylor-lab-hotspots hotspot_algo.R
+docker run -v </path/to/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz>:/mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz taylor-lab-hotspots hotspot_algo.R
     --input-maf=[REQUIRED: mutation file]
     --rdata=[REQUIRED: Rdata object with necessary files for algorithm]
     --output-file=[REQUIRED: output file to print statistically significant hotspots]
