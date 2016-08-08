@@ -62,10 +62,10 @@ RUN curl -ksSL -o tmp.zip --retry 10 https://github.com/Ensembl/ensembl-tools/ar
 WORKDIR /root/
 
 # install api
-RUN cd vep && perl INSTALL.pl --AUTO a --NO_HTSLIB
+# RUN cd vep && perl INSTALL.pl --AUTO a --NO_HTSLIB
 
-# install cache
-# RUN perl INSTALL.pl --AUTO c --SPECIES homo_sapiens --ASSEMBLY GRCh37
+RUN cd vep && \
+    perl INSTALL.pl --AUTO ap --SPECIES homo_sapiens --ASSEMBLY GRCh37 --PLUGINS ExAC,UpDownDistance --NO_HTSLIB
 
 # install vep plugins
 # RUN perl INSTALL.pl --AUTO p --PLUGINS 
