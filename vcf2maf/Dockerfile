@@ -30,6 +30,7 @@ RUN apt-get update && \
     libwww-perl \
     cpanminus \
     zlib1g-dev \
+    libncurses5-dev \
     curl \
     unzip && \
     apt-get clean && \
@@ -47,7 +48,18 @@ RUN curl -ksSL -o tmp.tar.gz --retry 10 https://github.com/samtools/htslib/archi
     ./configure && \
     make && \
     make install && \
-    rm -f ../tmp.tar.gz
+    cd /opt/ && \
+    rm -f tmp.tar.gz
+
+RUN curl -L -o tmp.tar.gz https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2 && \
+    mkdir samtools && \
+    tar -C samtools --strip-components 1 -jxf tmp.tar.gz && \
+    cd samtools && \
+    ./configure && \
+    make && \
+    make install && \
+    cd /opt/ && \
+    rm -f tmp.tar.gz
 
 RUN cpanm --mirror http://cpan.metacpan.org -l /opt/ File::Copy::Recursive Bio::DB::HTS && \
     rm -rf ~/.cpanm
@@ -56,19 +68,14 @@ RUN cpanm --mirror http://cpan.metacpan.org -l /opt/ File::Copy::Recursive Bio::
 RUN curl -ksSL -o tmp.zip --retry 10 https://github.com/Ensembl/ensembl-tools/archive/release/84.zip && \
     unzip tmp.zip && \
     mkdir ~/vep/ && \
-    mv ensembl-tools-release-84/scripts/variant_effect_predictor/* ~/vep/ && \
+    mv ensembl-tools-release-84/scripts/variant_effect_predictor/* /root/vep/ && \
     rm -f tmp.zip
 
 WORKDIR /root/
-
-# install api
-# RUN cd vep && perl INSTALL.pl --AUTO a --NO_HTSLIB
-
+# install VEP and plugins
 RUN cd vep && \
     perl INSTALL.pl --AUTO ap --SPECIES homo_sapiens --ASSEMBLY GRCh37 --PLUGINS ExAC,UpDownDistance --NO_HTSLIB
 
-# install vep plugins
-# RUN perl INSTALL.pl --AUTO p --PLUGINS 
 
 WORKDIR /home/
 # install vcf2maf
