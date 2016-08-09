@@ -74,14 +74,21 @@ RUN curl -ksSL -o tmp.zip --retry 10 https://github.com/Ensembl/ensembl-tools/ar
 WORKDIR /root/
 # install VEP and plugins
 RUN cd vep && \
-    perl INSTALL.pl --AUTO ap --SPECIES homo_sapiens --ASSEMBLY GRCh37 --PLUGINS ExAC,UpDownDistance --NO_HTSLIB
-
+    perl INSTALL.pl --AUTO ap --SPECIES homo_sapiens --ASSEMBLY GRCh37,GrCh38 --PLUGINS ExAC,UpDownDistance --NO_HTSLIB
+    
+RUN mv /root/.vep/Plugins /root/vep/
+ENV PERL5LIB $PERL5LIB:/root/vep/Plugins
 
 WORKDIR /home/
 # install vcf2maf
-RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.7.tar.gz && \
-    tar --strip-components 1 -zxf tmp.tar.gz && \
-    rm tmp.tar.gz
+# RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.7.tar.gz && \
+#     tar --strip-components 1 -zxf tmp.tar.gz && \
+#     rm tmp.tar.gz
+
+RUN curl -ksSL -o tmp.zip https://github.com/mskcc/vcf2maf/archive/master.zip && \
+    unzip tmp.zip && \
+    mv vcf2maf-master/* ./ && \
+    rm -rf tmp.zip vcf2maf-master
 
 VOLUME /home/
 

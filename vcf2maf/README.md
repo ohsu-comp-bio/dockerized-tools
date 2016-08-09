@@ -38,12 +38,10 @@ Download and unpack VEP's offline cache for GRCh37
 
 Download and index a custom ExAC r0.3 VCF, that skips variants overlapping known somatic hotspots:
 
-
-    curl -L -o $VEP_DATA/ExAC.r0.3.1.sites.vep.vcf.gz ftp://ftp.broadinstitute.org/pub/ExAC_release/current/ExAC.r0.3.1.sites.vep.vcf.gz
+    curl -L https://googledrive.com/host/0B6o74flPT8FAYnBJTk9aTF9WVnM > $VEP_DATA/ExAC.r0.3.sites.minus_somatic.vcf.gz
     tabix -p vcf $VEP_DATA/ExAC.r0.3.sites.minus_somatic.vcf.gz
 
 Convert the offline cache for use with tabix, that significantly speeds up the lookup of known variants:
-
 
     docker run -v $VEP_DATA:/mnt/homo_sapiens vcf2maf perl convert_cache.pl --species homo_sapiens --version 84_GRCh37 --dir /mnt/homo_sapiens
 
