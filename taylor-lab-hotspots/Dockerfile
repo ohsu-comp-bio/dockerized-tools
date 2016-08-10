@@ -76,19 +76,16 @@ RUN curl -L -o tmp.tar.gz https://github.com/arq5x/bedtools2/releases/download/v
     cd /tmp/ && \
     rm -rf *
 
-# download required resource
-# WORKDIR /opt/
-# RUN mkdir -p vep/grch37/release-84/fasta/homo_sapiens/dna/ && \
-#     cd vep/grch37/release-84/fasta/homo_sapiens/dna/ && \
-#     curl -L -o Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz http://ftp.ensembl.org/pub/grch37/release-84/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz && \
-#     gunzip Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz
-
+WORKDIR /home/
 # replace hardcoded path
 # during runtime you must mount this the following file at this location:
 # /mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa
-RUN sed -i 's/\/opt\/common\/CentOS_6-dev\/vep\/v81\/homo_sapiens\/81_GRCh37\/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa/\/mnt\/Homo_sapiens.GRCh37.dna.primary_assembly.fa/g' /home/make_trinuc_maf.py
+RUN sed -i 's/\/opt\/common\/CentOS_6-dev\/vep\/v81\/homo_sapiens\/81_GRCh37\/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa/\/mnt\/Homo_sapiens.GRCh37.dna.primary_assembly.fa/g' make_trinuc_maf.py
 
-WORKDIR /home/
+# path correction
+RUN sed -i 's/funcs\.R/\/home\/funcs\.R/g' hotspot_algo.R
+RUN sed -i 's/make_trinuc_maf\.py/\/home\/make_trinuc_maf\.py/g' hotspot_algo.R
+
 VOLUME /home/
 
-CMD ["./hotspot_algo.R"]
+CMD ["Rscript", "hotspot_algo.R"]
