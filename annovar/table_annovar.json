@@ -1,0 +1,7 @@
+{
+  "annovar.table_annovar.operation": "Array[String]",
+  "annovar.table_annovar.annovarInput": "File",
+  "annovar.table_annovar.protocol": "Array[String]",
+  "annovar.table_annovar.outputFilePrefix": "String",
+  "annovar.table_annovar.annovarDatabase": "File"
+}

@@ -26,6 +26,9 @@ RUN apt-get update && \
 RUN pip install scikit-learn
 RUN pip3 install scikit-learn
 
+RUN pip install --upgrade pandas
+RUN pip3 install --upgrade pandas
+
 WORKDIR /home/
 VOLUME /home/
 
