@@ -23,3 +23,7 @@ task maf2maf {
         docker: "vcf2maf"
     }
 }
+
+workflow run {
+    call maf2maf
+}

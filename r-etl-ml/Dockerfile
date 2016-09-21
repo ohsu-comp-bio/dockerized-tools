@@ -20,19 +20,29 @@ USER root
 RUN apt-get update && \
     apt-get install -y \
     libcairo2-dev \
+    libcurl4-openssl-dev \
+    openjdk-8-jdk \
+    libxml2-dev \
+    nodejs \
     && \
     apt-get clean && \ 
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # setup R configs
+RUN R CMD javareconf
+
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r); options(bitmapType='cairo')" > ~/.Rprofile
 
-RUN Rscript -e "install.packages(c('devtools', 'testthat', 'profvis', \
-                                   'httr', 'jsonlite'))"
+RUN Rscript -e "install.packages(c('testthat', 'profvis', 'httr', 'git2r', \
+                                   'jsonlite', 'RCurl', 'roxygen2', \
+                                   'statmod', 'rJava'))"
+
+RUN Rscript -e "install.packages(c('devtools'))"
+
 # install etl libraries
-RUN Rscript -e "install.packages(c('dplyr', 'tidyr', 'readr', \
-                                   'stringr', 'plyr', 'reshape2', 'lubridate', \
-                                   'data.table', 'foreach'))"
+RUN Rscript -e "install.packages(c('dplyr', 'tidyr', 'readr', 'stringr', \
+                                   'plyr', 'reshape2', 'lubridate', \
+                                   'data.table', 'dtplyr', 'foreach'))"
 
 # install plotting libraries
 RUN Rscript -e "install.packages(c('ggplot2', 'RColorBrewer', 'heatmap.2'))"
@@ -40,7 +50,10 @@ RUN Rscript -e "install.packages(c('ggplot2', 'RColorBrewer', 'heatmap.2'))"
 # install ml libraries
 RUN Rscript -e "install.packages(c('randomForest', 'glmnet', 'e1071', 'rpart', \
                                    'nnet', 'igraph', 'ROCR', 'caret', 'party', \
-                                   'gbm', 'kernlab', 'car'))"
+                                   'gbm', 'kernlab', 'car', 'mlr', 'arules', \
+                                   'tree', 'klaR', 'mice', 'ipred', 'lars', \
+                                   'earth', 'mboost', 'CORElearn', 'penalized', \
+                                   'h2o', 'RWeka', 'FSelector))"
 
 # install bioconductor
 RUN Rscript -e "source('https://bioconductor.org/biocLite.R'); \
