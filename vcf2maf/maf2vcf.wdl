@@ -13,16 +13,17 @@ task maf2vcf {
     String outputFilePrefix
 
     command {
-        perl /home/vcf2maf.pl --input-vcf ${inputMAF} \
-                        --output-vcf ${outputDir}/${outputFilePrefix}.vcf \
-                        --ref-fasta ${refFasta} \
-                        ${"--tum-depth-col " + tumDepthCol} \
-                        ${"--tum-rad-col " + tumRadCol} \
-                        ${"--tum-vad-col " + tumVadCol} \
-                        ${"--nrm-depth-col " + nrmDepthCol} \
-                        ${"--nrm-rad-col " + nrmRadCol} \
-                        ${"--nrm-vad-col " + nrmVadCol} \
-                        ${true="--per-tn-vcfs" false="" perTumNrmVcfs}
+        perl /home/maf2vcf.pl --input-maf ${inputMAF} \
+                              --output-dir ${outputDir} \
+                              --output-vcf ${outputFilePrefix}.vcf \
+                              --ref-fasta ${refFasta} \
+                              ${"--tum-depth-col " + tumDepthCol} \
+                              ${"--tum-rad-col " + tumRadCol} \
+                              ${"--tum-vad-col " + tumVadCol} \
+                              ${"--nrm-depth-col " + nrmDepthCol} \
+                              ${"--nrm-rad-col " + nrmRadCol} \
+                              ${"--nrm-vad-col " + nrmVadCol} \
+                              ${true="--per-tn-vcfs" false="" perTumNrmVcfs}
     }
 
     output {
