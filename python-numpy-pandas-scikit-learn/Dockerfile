@@ -19,15 +19,33 @@ USER root
 
 RUN apt-get update && \
     apt-get install -y \
-    python3 python3-numpy python3-scipy python3-setuptools python3-nose python3-pandas python3-pip python3-wheel \
-    python python-numpy python-scipy python-setuptools python-nose python-pandas python-pip python-wheel \
-    pep8 
+    python3 python3-pip \
+    python python-pip \
+    tk \
+    libpng-dev \
+    libfreetype6-dev \
+    libblas-dev \
+    liblapack-dev \
+    libatlas-base-dev \
+    pep8 \
+    && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+Run pip install -U pip
+Run pip3 install -U pip
+
+RUN pip install numpy
+RUN pip3 install numpy
+
+RUN pip install scipy
+RUN pip3 install scipy
+
+RUN pip install pandas
+RUN pip3 install pandas
 
 RUN pip install scikit-learn
 RUN pip3 install scikit-learn
-
-RUN pip install --upgrade pandas
-RUN pip3 install --upgrade pandas
 
 WORKDIR /home/
 VOLUME /home/

@@ -21,28 +21,27 @@ FROM ubuntu:14.04
 
 MAINTAINER Adam Struck <strucka@ohsu.edu>
 
+USER root
+ 
 RUN apt-get update && \
     apt-get install -y \
-    pkg-config \
-    tar \ 
-    curl \
-    python3-pip \
-    python3-tk \
+    curl \    
     tk \
+    python3 python3-pip python3-tk \
     libpng-dev \
     libfreetype6-dev \
     libblas-dev \
     liblapack-dev \
     libatlas-base-dev \
-    gfortran \
+    pep8 \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install dependencies
+Run pip3 install -U pip
 RUN pip3 install numpy
 RUN pip3 install scipy
-RUN pip3 install pandas 
+RUN pip3 install pandas
 RUN pip3 install statsmodels
 RUN pip3 install matplotlib
 
