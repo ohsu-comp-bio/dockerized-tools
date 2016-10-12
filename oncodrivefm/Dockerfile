@@ -39,11 +39,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 Run pip3 install -U pip
-RUN pip3 install numpy
-RUN pip3 install scipy
-RUN pip3 install pandas
-RUN pip3 install statsmodels
-RUN pip3 install matplotlib
+RUN pip3 install numpy==1.11.2
+RUN pip3 install scipy==0.18.1
+RUN pip3 install pandas==0.18.1
+RUN pip3 install statsmodels==0.6.1
+RUN pip3 install matplotlib==1.5.3
 
 WORKDIR /tmp/
 RUN curl -L -o tmp.tar.gz https://bitbucket.org/bbglab/oncodrivefm/get/1.0.1.tar.gz && \
