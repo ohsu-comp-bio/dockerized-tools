@@ -81,14 +81,9 @@ ENV PERL5LIB $PERL5LIB:/root/vep/Plugins
 
 WORKDIR /home/
 # install vcf2maf
-# RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.7.tar.gz && \
-#     tar --strip-components 1 -zxf tmp.tar.gz && \
-#     rm tmp.tar.gz
-
-RUN curl -ksSL -o tmp.zip https://github.com/mskcc/vcf2maf/archive/master.zip && \
-    unzip tmp.zip && \
-    mv vcf2maf-master/* ./ && \
-    rm -rf tmp.zip vcf2maf-master
+RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.7.tar.gz && \
+    tar --strip-components 1 -zxf tmp.tar.gz && \
+    rm tmp.tar.gz
 
 VOLUME /home/
 
