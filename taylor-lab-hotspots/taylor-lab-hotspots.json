@@ -1,0 +1,10 @@
+{
+  "taylor_lab_hotspots.call_hotspots.outputDir": "String",
+  "taylor_lab_hotspots.call_hotspots.outputFilePrefix": "String",
+  "taylor_lab_hotspots.call_hotspots.align24mer": "(optional) File",
+  "taylor_lab_hotspots.call_hotspots.align100mer": "(optional) File",
+  "taylor_lab_hotspots.call_hotspots.refFastaFai": "File",
+  "taylor_lab_hotspots.call_hotspots.inputMAF": "File",
+  "taylor_lab_hotspots.call_hotspots.refFasta": "File",
+  "taylor_lab_hotspots.call_hotspots.geneQuery": "(optional) File"
+}

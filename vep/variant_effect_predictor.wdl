@@ -10,7 +10,6 @@ task variant_effect_predictor {
     String assembly = "GRCh37"
     String format = "vcf"
 
-    String outputDir
     String outputFileName
 
     # output format options
@@ -106,11 +105,11 @@ task variant_effect_predictor {
         ${true='--json' false='' json} \
         ${true='--gvcf' false='' gvcf} \
         ${true='--minimal' false='' minimal} \
-        --output_file ${outputDir}/${outputFileName}
+        --output_file ${outputFileName}
     }
 
     output {
-        File annotatedFile = "${outputDir}/${outputFileName}"
+        File annotatedFile = "${outputFileName}"
     }
 
     runtime {

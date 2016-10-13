@@ -63,14 +63,8 @@ RUN curl -ksSL -o tmp.zip --retry 10 https://github.com/Ensembl/ensembl-tools/ar
 
 WORKDIR /home/
 
-# install api
-RUN perl INSTALL.pl --AUTO a --NO_HTSLIB
-
-# install cache
-# RUN perl INSTALL.pl --AUTO c --SPECIES homo_sapiens --ASSEMBLY GRCh37
-
-# install vep plugins
-# RUN perl INSTALL.pl --AUTO p --PLUGINS 
+# install VEP and plugins
+RUN perl INSTALL.pl --AUTO ap --SPECIES homo_sapiens --ASSEMBLY GRCh37,GrCh38 --PLUGINS all --NO_HTSLIB
 
 VOLUME /home/
 CMD ["perl", "variant_effect_predictor.pl"]

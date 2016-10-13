@@ -85,8 +85,8 @@ RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.7.tar
     tar --strip-components 1 -zxf tmp.tar.gz && \
     rm tmp.tar.gz
 
-RUN sed -i '223 c \    my $out_dir = $output_maf =~ s/(.*\\/)(.*\.maf).*$/$1/r;\n    $output_vcf =~ s/(.*\\/)(.*)(\.vcf).*$/$out_dir$2.vep.vcf/;' vcf2maf.pl
-# ADD vcf2maf.pl .
+# modifcation to src so that intermediate file prodiced by vep is written to the same location as the MAF output file
+RUN sed -i '223 c \    my $out_dir = $output_maf =~ s/(.*\\/)?(.*\.maf).*$/$1/r;\n    $output_vcf =~ s/(.*\\/)(.*)(\.vcf).*$/$out_dir$2.vep.vcf/;' vcf2maf.pl
 
 VOLUME /home/
 
