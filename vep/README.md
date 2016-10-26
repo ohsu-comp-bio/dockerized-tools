@@ -32,7 +32,7 @@ Download and unpack VEP's offline cache for GRCh37
 Download and index a custom ExAC r0.3.1 VCF, that skips variants overlapping known somatic hotspots:
 
     curl -L ftp://ftp.broadinstitute.org:/pub/ExAC_release/release0.3.1/subsets/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz > $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
-    bcftools filter --targets ^2:25457242-25457243,12:121176677-121176678 --output-type z --output $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.minus_somatic.vep.vcf.gz $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
+    bcftools filter --targets ^2:25457242-25457243,12:121176677-121176678 --output-type b --output $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.minus_somatic.vep.vcf.gz $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
     mv -f $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.minus_somatic.vep.vcf.gz $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
     tabix -p vcf $VEP_DATA/ExAC.r0.3.sites.minus_somatic.vcf.gz
 
