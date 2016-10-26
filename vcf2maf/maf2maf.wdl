@@ -1,5 +1,6 @@
 task maf2maf {
     File inputMAF
+    File? vepAnnotatedInputVCF
     File? customEnst
     String? tumDepthCol
     String? tumRadCol
@@ -14,10 +15,14 @@ task maf2maf {
     File refFastaFai = "~/.vep/homo_sapiens/84_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz.fai"
     String ncbiBuild = "GRCh37"
     String species = "homo_sapiens"
-    String outputDir
     String outputFilePrefix
+    String? tmpDir
 
     command {
+        if [ -n '${vepAnnotatedInputVCF}' ]; then
+            ln -s ${vepAnnotatedInputVCF} ${tmpDir + "/"}$(basename ${inputMAF} .maf).vep.vcf
+        fi
+    
         # Handling the optional arrays
         if [ -n '${sep="," retainCols}' ]; then
             RETAIN_COLS_FLAG=--apply-filters ${sep="," retainCols}
@@ -26,7 +31,8 @@ task maf2maf {
         fi
 
         perl /home/maf2maf.pl --input-maf ${inputMAF} \
-                              --output-maf ${outputDir}/${outputFilePrefix}.maf
+                              --output-maf ${outputFilePrefix}.maf
+                              ${"--tmp-dir " + tmpDir} \
                               ${"--tum-depth-col " + tumDepthCol} \
                               ${"--tum-rad-col " + tumRadCol} \
                               ${"--tum-vad-col " + tumVadCol} \

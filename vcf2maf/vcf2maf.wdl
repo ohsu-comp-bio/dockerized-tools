@@ -1,5 +1,7 @@
 task vcf2maf {
     File inputVCF
+    File? vepAnnotatedInputVCF
+    String? tmpDir
     String? tumorId
     String? normalId
     String? vcfTumorId
@@ -13,12 +15,16 @@ task vcf2maf {
     String species = "homo_sapiens"
     String? mafCenter
     Float? minHomVaf
-    String outputDir
     String outputFilePrefix
 
-    command {
+    command {            
+        if [ -n '${vepAnnotatedInputVCF}' ]; then
+            ln -s ${vepAnnotatedInputVCF} ${tmpDir + "/"}$(basename ${inputVCF} .vcf).vep.vcf
+        fi
+
         perl /home/vcf2maf.pl --input-vcf ${inputVCF} \
-                              --output-maf ${outputDir}/${outputFilePrefix}.maf \
+                              --output-maf ${outputFilePrefix}.maf \
+                              ${"--tmp-dir " + tmpDir} \
                               ${"--tumor-id " + tumorId} \
                               ${"--normal-id " + normalId} \
                               ${"--vcf-tumor-id " + vcfTumorId} \
@@ -34,7 +40,7 @@ task vcf2maf {
     }
 
     output {
-        File maf = "${outputDir}/${outputFilePrefix}.maf"
+        File maf = "${outputFilePrefix}.maf"
     }
 
     runtime {

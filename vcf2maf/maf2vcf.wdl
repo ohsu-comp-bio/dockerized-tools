@@ -13,9 +13,7 @@ task maf2vcf {
     String outputFilePrefix
 
     command {
-        perl /home/maf2vcf.pl --input-maf ${inputMAF} \
-                              --output-dir ${outputDir} \
-                              --output-vcf ${outputFilePrefix}.vcf \
+        perl /home/maf2vcf.pl --input-maf ${inputMAF} \                           
                               --ref-fasta ${refFasta} \
                               ${"--tum-depth-col " + tumDepthCol} \
                               ${"--tum-rad-col " + tumRadCol} \
@@ -23,7 +21,9 @@ task maf2vcf {
                               ${"--nrm-depth-col " + nrmDepthCol} \
                               ${"--nrm-rad-col " + nrmRadCol} \
                               ${"--nrm-vad-col " + nrmVadCol} \
-                              ${true="--per-tn-vcfs" false="" perTumNrmVcfs}
+                              ${true="--per-tn-vcfs" false="" perTumNrmVcfs} \
+                              --output-dir ${outputDir} \
+                              --output-vcf ${outputFilePrefix}.vcf
     }
 
     output {

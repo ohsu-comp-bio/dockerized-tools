@@ -27,23 +27,24 @@ Download and Prepare VEP Data Dependencies
 
 Download and unpack VEP's offline cache for GRCh37
 
-
     export VEP_DATA = /home/.vep
     cd $VEP_DATA
-    wget http://ftp.ensembl.org/pub/grch37/release-84/variation/VEP/homo_sapiens_vep_84_GRCh37.tar.gz
-    tar xvfz homo_sapiens_vep_84_GRCh37.tar.gz
+    rsync -zvh rsync://ftp.ensembl.org/ensembl/pub/release-86/variation/VEP/homo_sapiens_vep_86_GRCh37.tar.gz $VEP_DATA
+    tar xvfz homo_sapiens_vep_86_GRCh37.tar.gz
     wget http://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz
     gunzip Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz
     bgzip Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz
 
 Download and index a custom ExAC r0.3 VCF, that skips variants overlapping known somatic hotspots:
 
-    curl -L https://googledrive.com/host/0B6o74flPT8FAYnBJTk9aTF9WVnM > $VEP_DATA/ExAC.r0.3.sites.minus_somatic.vcf.gz
+    curl -L ftp://ftp.broadinstitute.org:/pub/ExAC_release/release0.3.1/subsets/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz > $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
+    bcftools filter --targets ^2:25457242-25457243,12:121176677-121176678 --output-type z --output $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.minus_somatic.vep.vcf.gz $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
+    mv -f $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.minus_somatic.vep.vcf.gz $VEP_DATA/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
     tabix -p vcf $VEP_DATA/ExAC.r0.3.sites.minus_somatic.vcf.gz
 
 Convert the offline cache for use with tabix, that significantly speeds up the lookup of known variants:
 
-    docker run -v $VEP_DATA:/mnt/homo_sapiens vcf2maf perl convert_cache.pl --species homo_sapiens --version 84_GRCh37 --dir /mnt/homo_sapiens
+    docker run -v $VEP_DATA:/mnt vcf2maf perl /root/vep/convert_cache.pl --species homo_sapiens --version 86_GRCh37 --dir /mnt
 
 
 License

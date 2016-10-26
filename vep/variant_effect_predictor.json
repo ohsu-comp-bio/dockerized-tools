@@ -7,9 +7,11 @@
   "vep.variant_effect_predictor.inputFile": "File",
   "vep.variant_effect_predictor.terms": "(optional) String",
   "vep.variant_effect_predictor.refFasta": "File",
-  "vep.variant_effect_predictor.outputDir": "String",
   "vep.variant_effect_predictor.polyphen": "(optional) String",
+  "vep.variant_effect_predictor.shift_hgvs": "(optional) Int",
+  "vep.variant_effect_predictor.failed": "(optional) Int",
   "vep.variant_effect_predictor.refFastaFai": "File",
+  "vep.variant_effect_predictor.fork": "(optional) Int",
   "vep.variant_effect_predictor.vcf_info_field": "(optional) String",
   "vep.variant_effect_predictor.plugin": "(optional) String",
   "vep.variant_effect_predictor.sift": "(optional) String"
