@@ -9,7 +9,6 @@ task maf2vcf {
     String? nrmRadCol
     String? nrmVadCol
     Boolean perTumNrmVcfs = false
-    String outputDir
     String outputFilePrefix
 
     command {
@@ -22,12 +21,11 @@ task maf2vcf {
                               ${"--nrm-rad-col " + nrmRadCol} \
                               ${"--nrm-vad-col " + nrmVadCol} \
                               ${true="--per-tn-vcfs" false="" perTumNrmVcfs} \
-                              --output-dir ${outputDir} \
                               --output-vcf ${outputFilePrefix}.vcf
     }
 
     output {
-        File vcf = "${outputDir}/${outputFilePrefix}.vcf"
+        File vcf = "${outputFilePrefix}.vcf"
     }
 
     runtime {

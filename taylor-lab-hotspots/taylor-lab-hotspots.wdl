@@ -8,7 +8,6 @@ task call_hotspots {
      String homopolymer = "TRUE"
      String filterCenterBias = "FALSE"
      String naStringRegEx = "\\."
-     String outputDir
      String outputFilePrefix
 
      command {
@@ -27,14 +26,14 @@ task call_hotspots {
                                 ${"--align24mer=" + align24mer} \
                                 --homopolymer=${homopolymer} \
                                 --filter-centerbias=${filterCenterBias} \
-                                --output-file=${outputDir}/${outputFilePrefix}.txt;
+                                --output-file=${outputFilePrefix}.txt;
 
         # cleanup
         rm tmp.maf /mnt/$(basename ${refFasta}) /mnt/$(basename ${refFastaFai})
      }
 
      output {
-         File hotspots = "${outputDir}/${outputFilePrefix}.txt"
+         File hotspots = "${outputFilePrefix}.txt"
      }
 
      runtime {

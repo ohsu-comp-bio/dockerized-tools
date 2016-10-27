@@ -49,7 +49,7 @@ task maf2maf {
     }
 
     output {
-        File maf = "${outputDir}/${outputFilePrefix}.maf"
+        File maf = "${outputFilePrefix}.maf"
     }
 
     runtime {

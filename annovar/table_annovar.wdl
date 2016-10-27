@@ -6,11 +6,8 @@ task table_annovar {
    String build = "hg19"
    String nastring = "."
    String outputFilePrefix
-   String outputDir = "."
 
    command {
-       mkdir -p ${outputDir};
-       cd ${outputDir};
        table_annovar.pl ${annovarInput} \
                         ${annovarDatabase} \
                         --protocol ${sep="," protocol} \
@@ -21,7 +18,7 @@ task table_annovar {
    }
 
    output {
-       File multianno = "${outputDir}/${outputFilePrefix}.${build}_multianno.txt"
+       File multianno = "${outputFilePrefix}.${build}_multianno.txt"
    }
 
    runtime {
