@@ -1,12 +1,14 @@
 {
   "bcftools.merge.merge": "(optional) String",
   "bcftools.merge.info_rules": "(optional) Array[String]",
-  "bcftools.merge.output_dir": "String",
+  "bcftools.merge.no_version": "(optional) Boolean",
   "bcftools.merge.vcf_files": "Array[File]",
   "bcftools.merge.output_file_prefix": "String",
   "bcftools.merge.regions": "(optional) Array[String]",
   "bcftools.merge.use_header": "(optional) File",
+  "bcftools.merge.print_header": "(optional) Boolean",
   "bcftools.merge.vcf_files_tbi": "Array[File]",
+  "bcftools.merge.force_samples": "(optional) Boolean",
   "bcftools.merge.regions_file": "(optional) File",
   "bcftools.merge.apply_filters": "(optional) Array[String]"
 }

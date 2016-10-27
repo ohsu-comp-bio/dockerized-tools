@@ -6,13 +6,12 @@ task merge {
     Array[String]? apply_filters
     Array[String]? info_rules
     Array[String]? regions
-    Boolean force_samples = true
-    Boolean print_header = false
-    Boolean no_version = false
+    Boolean? force_samples
+    Boolean? print_header
+    Boolean? no_version
     String? merge
     String output_type = 'z'
     String output_file_prefix
-    String output_dir
     Int threads = 3
     
     command {
@@ -47,12 +46,12 @@ task merge {
         ${"--merge " + merge} \
         ${"--threads " + threads} \
         --output-type ${output_type} \
-        --output ${output_dir}/${output_file_prefix}.vcf.gz \
+        --output ${output_file_prefix}.vcf.gz \
         ${sep=" " vcf_files}
     }
     
     output {
-        File merged_vcf = "${output_dir}/${output_file_prefix}.vcf.gz"
+        File merged_vcf = "${output_file_prefix}.vcf.gz"
     }
 
     runtime {
