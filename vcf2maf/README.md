@@ -6,20 +6,16 @@ To convert a [VCF](http://samtools.github.io/hts-specs/) into a [MAF](https://wi
 Quick start
 -----------
 
-Clone this repo, build the image and view the detailed usage manual:
+Clone this repo and build the image:
     
     docker build -t vcf2maf .
-    docker run vcf2maf
+        
         
 To view the vcf2maf source code, [click here](https://github.com/mskcc/vcf2maf/).
 
-After installing building the image, you can test it like so:
+After building the image, you can test it like so:
 
     docker run -v /vep/data/path/homo_sapiens:/mnt/homo_sapiens vcf2maf perl vcf2maf.pl --input-vcf data/test.vcf --output-maf data/test.vep.maf --vep-data /mnt/ --ref-fasta /mnt/homo_sapiens/84_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz
-
-OR
-
-    docker run -v /vep/data/path/homo_sapiens:/root/.vep/homo_sapiens vcf2maf perl vcf2maf.pl --input-vcf data/test.vcf --output-maf data/test.vep.maf
 
 
 Download and Prepare VEP Data Dependencies

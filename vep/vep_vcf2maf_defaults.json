@@ -2,12 +2,12 @@
   "vep.variant_effect_predictor.outputFileName": "test",
   "vep.variant_effect_predictor.cacheDir": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache",
   "vep.variant_effect_predictor.inputFile": "/Users/strucka/Data/metabric/metabric_mutations_ensembl.vcf",
-  "vep.variant_effect_predictor.refFasta": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache/homo_sapiens/84_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz",
-  "vep.variant_effect_predictor.refFastaFai": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache/homo_sapiens/84_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz.fai",
+  "vep.variant_effect_predictor.refFasta": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz",
+  "vep.variant_effect_predictor.refFastaFai": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz.fai",
   "vep.variant_effect_predictor.everything": true,
   "vep.variant_effect_predictor.shift_hgvs": 1,
   "vep.variant_effect_predictor.failed": 1,  
   "vep.variant_effect_predictor.plugin": "ExAC",
-  "vep.variant_effect_predictor.pluginFileName": "ExAC.r0.3.sites.minus_somatic.vcf.gz",
+  "vep.variant_effect_predictor.pluginFileName": "ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz",
   "vep.variant_effect_predictor.pluginArgs": [""]
 }

@@ -11,9 +11,9 @@ Clone this repo and build the image:
     docker build -t vep .
 
 
-After installing building the image, you can test it like so:
+After building the image and downloading the offline cache, you can test the image like so:
 
-    docker run -v /vep/data/path/homo_sapiens:/mnt/homo_sapiens vep variant_effect_predictor.pl --species homo_sapiens --assembly GRCh37 --offline --no_progress --no_stats --sift b --ccds --uniprot --hgvs --symbol --numbers --domains --gene_phenotype --canonical --protein --biotype --uniprot --tsl --pubmed --variant_class --shift_hgvs 1 --check_existing --total_length --allele_number --no_escape --xref_refseq --failed 1 --vcf --minimal --flag_pick_allele --pick_order canonical,tsl,biotype,rank,ccds,length --dir $VEP_DATA --fasta $VEP_DATA/homo_sapiens/86_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz --input_file example_GRCh37.vcf --output_file example_GRCh37.vep.vcf --everything --dir_cache /mnt/
+    docker run -v /vep/data/path/homo_sapiens:/mnt/homo_sapiens vep variant_effect_predictor.pl --species homo_sapiens --assembly GRCh37 --offline --no_progress --no_stats --vcf --minimal --dir $VEP_DATA --fasta $VEP_DATA/homo_sapiens/86_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz --input_file example_GRCh37.vcf --output_file /opt/ensembl-tools-release-84/scripts/variant_effect_predictor/example_GRCh37.vep.vcf --everything --dir_cache /mnt/
 
 
 Download and Prepare VEP Data Dependencies
