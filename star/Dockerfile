@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         STAR
 # Software Version: 2.5.2a
 # Description:      Spliced Transcripts Alignment to a Reference
 # Website:          https://github.com/alexdobin/STAR.git
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/star
-# Run Cmd:          docker run  ccc/star star [options...]
+# Run Cmd:          docker run star star [options...]
 #################################################################
 FROM ubuntu:14.04
 

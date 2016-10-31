@@ -1,7 +1,6 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         bedtools
 # Software Version: 2.26.0
 # Description:      The bedtools utilities are a swiss-army knife of tools for 
@@ -9,8 +8,7 @@
 #                   tools enable genome arithmetic: that is, set theory on the genome.
 # Website:          https://github.com/arq5x/bedtools
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/bedtools
-# Run Cmd:          docker run ccc/bedtools bedtools --help
+# Run Cmd:          docker run bedtools bedtools --help
 #################################################################
 FROM ubuntu:14.04
 

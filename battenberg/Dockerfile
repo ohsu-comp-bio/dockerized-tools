@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         cgpBattenberg
 # Software Version: 1.4.0
 # Description:      Battenberg algorithm and associated implementation script which detects subclonality and copy number in matched NGS data.
 # Website:          https://github.com/cancerit/cgpBattenberg
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/cgpbattenberg
-# Run Cmd:          docker run ccc/cgpbattenberg battenberg.pl -h
+# Run Cmd:          docker run cgpbattenberg battenberg.pl -h
 #################################################################
 FROM ubuntu:14.04
 

@@ -5,6 +5,7 @@
   "vep.variant_effect_predictor.refFasta": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz",
   "vep.variant_effect_predictor.refFastaFai": "/Users/strucka/Projects/dockerized_tools/vep/resources/vep_offline_cache/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz.fai",
   "vep.variant_effect_predictor.everything": true,
+  "vep.variant_effect_predictor.vcf": true,
   "vep.variant_effect_predictor.shift_hgvs": 1,
   "vep.variant_effect_predictor.failed": 1,  
   "vep.variant_effect_predictor.plugin": "ExAC",

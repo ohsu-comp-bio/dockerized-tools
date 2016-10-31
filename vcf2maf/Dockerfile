@@ -1,15 +1,13 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         vcf2maf
 # Software Version: 1.6.10
 # Description:      Convert a VCF into a MAF, where each variant is annotated 
 #                   to only one of all possible gene isoforms
 # Website:          https://github.com/mskcc/vcf2maf
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/vcf2maf
-# Run Cmd:          docker run  ccc/vcf2maf perl vcf2maf.pl --man
+# Run Cmd:          docker run vcf2maf perl vcf2maf.pl --man
 #################################################################
 FROM ubuntu:14.04
 

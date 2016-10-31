@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         biobambam2
 # Software Version: 2.0.50
 # Description:      This package contains some tools for processing BAM files
 # Website:          https://github.com/gt1/biobambam2
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/biobambam2
-# Run Cmd:          docker run  ccc/biobambam2 [biobambam2 cmd] [options...]
+# Run Cmd:          docker run biobambam2 [biobambam2 cmd] [options...]
 #################################################################
 FROM ubuntu:14.04
 

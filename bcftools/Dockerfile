@@ -1,7 +1,6 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         bcftools
 # Software Version: 1.3.1
 # Description:      BCFtools is a program for variant calling and manipulating 
@@ -9,8 +8,7 @@
 #                   counterpart BCF.
 # Website:          https://github.com/samtools/bcftools
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/bcftools
-# Run Cmd:          docker run ccc/bcftools bcftools --help
+# Run Cmd:          docker run bcftools bcftools --help
 #################################################################
 FROM ubuntu:14.04
 

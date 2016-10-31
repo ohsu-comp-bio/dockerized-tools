@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         VEP
 # Software Version: 86
 # Description:      Variant Effect Predictor
 # Website:          http://uswest.ensembl.org/info/docs/tools/vep/index.html
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/vep
-# Run Cmd:          docker run  ccc/vep perl variant_effect_predictor.pl
+# Run Cmd:          docker run vep perl variant_effect_predictor.pl
 #################################################################
 FROM ubuntu:14.04
 

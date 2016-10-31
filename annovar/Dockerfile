@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         annovar
 # Software Version: revision160201
 # Description:      Variant Effect Predictor
 # Website:          http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/annovar.revision160201.tar.gz
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/annovar
-# Run Cmd:          docker run  ccc/annovar
+# Run Cmd:          docker run annovar table_annovare.pl --help
 #################################################################
 FROM ubuntu:14.04
 

@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         samtools
 # Software Version: 1.3.1
 # Description:      Tools (written in C using htslib) for manipulating next-generation sequencing data
 # Website:          https://github.com/samtools/samtools
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/samtools
-# Run Cmd:          docker run ccc/samtools samtools --help
+# Run Cmd:          docker run samtools samtools --help
 #################################################################
 FROM ubuntu:14.04
 

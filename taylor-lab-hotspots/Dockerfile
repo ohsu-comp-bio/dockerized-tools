@@ -1,7 +1,6 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         taylor-lab-hotspots
 # Software Version: 0.6
 # Description:      This is a method to identify population-scale recurrent 
@@ -11,8 +10,7 @@
 #                   and major expected patterns of hotspot mutation emergence
 # Website:          https://github.com/taylor-lab/hotspots
 # Base Image:       r-base:3.3.1
-# Pull Cmd:         docker pull ccc/taylor-lab-hotspots
-# Run Cmd:          docker run  ccc/taylor-lab-hotspots /bin/sh -c "cat README.md"
+# Run Cmd:          docker run taylor-lab-hotspots /bin/sh -c "cat README.md"
 #################################################################
 FROM r-base:3.3.1
 

@@ -1,15 +1,13 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         SnpEff
 # Software Version: 4.3
 # Description:      SnpEff is a genetic variant annotation and effect prediction toolbox.
 # Website:          http://snpeff.sourceforge.net/index.html
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/snpeff
-# Run Cmd:          docker run  ccc/snpeff java -jar snpEff.jar
-#                   docker run  ccc/snpeff java -jar SnpSift.jar
+# Run Cmd:          docker run  snpeff java -jar snpEff.jar
+#                   docker run  snpeff java -jar SnpSift.jar
 #################################################################
 FROM ubuntu:14.04
 

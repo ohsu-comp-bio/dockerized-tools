@@ -1,7 +1,6 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         Oncodrive FM
 # Software Version: 1.0.1
 # Description:      OncodriveFM detects candidate cancer driver genes and 
@@ -14,8 +13,7 @@
 #                   recurrently mutated driver genes.
 # Website:          https://bitbucket.org/bbglab/oncodrivefm
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/oncodrivefm
-# Run Cmd:          docker run  ccc/oncodrivefm oncodrivefm --help
+# Run Cmd:          docker run oncodrivefm oncodrivefm --help
 #################################################################
 FROM ubuntu:14.04
 

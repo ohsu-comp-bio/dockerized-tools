@@ -1,7 +1,6 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         oncotator
 # Software Version: 1.9.0.0
 # Description:      Oncotator is an application for annotating human 
@@ -9,8 +8,7 @@
 #                   to cancer researchers.
 # Website:          https://github.com/broadinstitute/oncotator
 # Base Image:       python:2.7.9
-# Pull Cmd:         docker pull ccc/oncotator
-# Run Cmd:          docker run  ccc/oncotator oncotator -h
+# Run Cmd:          docker run oncotator oncotator -h
 #################################################################
 FROM python:2.7.9
 

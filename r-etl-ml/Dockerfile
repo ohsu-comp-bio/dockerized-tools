@@ -1,15 +1,13 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         R
 # Software Version: 3.3.1
 # Description:      R with some useful libraries for ETL (Extract, Transform, 
 #                   Load) and machine learning tasks
 # Website:          https://hub.docker.com/_/r-base/
 # Base Image:       r-base:3.3.1
-# Pull Cmd:         docker pull ccc/R-ccc
-# Run Cmd:          docker run  ccc/R-ccc
+# Run Cmd:          
 #################################################################
 FROM r-base:3.3.1
 

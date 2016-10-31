@@ -1,15 +1,13 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         python-numpy-pandas-scikit-learn
 # Software Version: NA
 # Description:      Python with numpy, pandas, and scikit-learn. 
 #                   Supports both python 2.7 and python 3
 # Website:          NA
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/python-numpy-pandas-scikit-learn
-# Run Cmd:          docker run  ccc/python-numpy-pandas-scikit-learn python
+# Run Cmd:          
 #################################################################
 FROM ubuntu:14.04
 

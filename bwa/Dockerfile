@@ -1,14 +1,12 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         BWA
 # Software Version: 0.7.15
 # Description:      Burrow-Wheeler Aligner for pairwise alignment between DNA sequences
 # Website:          https://github.com/lh3/bwa
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/bwa
-# Run Cmd:          docker run  ccc/bwa bwa [options...]
+# Run Cmd:          docker run bwa bwa mem [options...]
 #################################################################
 FROM ubuntu:14.04
 

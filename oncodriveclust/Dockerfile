@@ -1,15 +1,13 @@
 #################################################################
 # Dockerfile
 #
-# Version:          1
 # Software:         Oncodrive CLUST
 # Software Version: 1.0.0
 # Description:      OncodriveCLUST is a method aimed to identify genes whose 
 #                   mutations are biased towards a large spatial clustering. 
 # Website:          https://bitbucket.org/bbglab/oncodriveclust
 # Base Image:       ubuntu 14.04
-# Pull Cmd:         docker pull ccc/oncodriveclust
-# Run Cmd:          docker run  ccc/oncodriveclust oncodriveclust --help
+# Run Cmd:          docker run oncodriveclust oncodriveclust --help
 #################################################################
 FROM ubuntu:14.04
 
