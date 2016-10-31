@@ -39,10 +39,10 @@ Download and index a custom ExAC r0.3.1 VCF, that skips variants overlapping kno
 
 Download and index the files required for the dbNSFP plugin:
 
-    wget ftp://dbnsfp:dbnsfp@dbnsfp.softgenetics.com/dbNSFPv3.2a.zip
-    unzip dbNSFPv3.2a.zip
-    head -n1 dbNSFP3.2a_variant.chr1 > h
-    cat dbNSFP3.2a_variant.chr* | grep -v ^#chr | sort -k1,1 -k2,2n - | cat h - | bgzip -c > dbNSFP.gz
+    wget ftp://dbnsfp:dbnsfp@dbnsfp.softgenetics.com/dbNSFPv2.9.1.zip
+    unzip dbNSFPv2.9.1.zip
+    head -n1 dbNSFP2.9.1_variant.chr1 > h
+    cat dbNSFP2.9.1_variant.chr* | grep -v ^#chr | sort -k1,1 -k2,2n - | cat h - | bgzip -c > dbNSFP.gz
     tabix -s 1 -b 2 -e 2 dbNSFP.gz
 
 
