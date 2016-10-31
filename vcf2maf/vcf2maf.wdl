@@ -6,8 +6,10 @@ task vcf2maf {
     File? vepPath
     File refFasta
     File refFastaFai
+    File? remapChain
     String ncbiBuild = "GRCh37"
     String species = "homo_sapiens"
+    Array[String]? retainInfoCols
     String? tumorId
     String? normalId
     String? vcfTumorId
@@ -15,28 +17,38 @@ task vcf2maf {
     File? customEnst
     String? mafCenter
     Float? minHomVaf
+    
     String outputFilePrefix
 
-    command {            
+    command {
         if [ -n "${vepAnnotatedInputVCF}" ]; then
             ln -s ${vepAnnotatedInputVCF} ${tmpDir + "/"}$(basename ${inputVCF} .vcf).vep.vcf
+        fi
+
+        # retain extra INFO cols
+        if [ -n "${sep="," retainInfoCols}" ]; then
+           INFOCOLS="--retain-info  ${sep ="," retainInfoCols}"
+        else
+           INFOCOLS=""
         fi
 
         perl /home/vcf2maf.pl --input-vcf ${inputVCF} \
                               --output-maf ${outputFilePrefix}.maf \
                               --vep-data ${vepOfflineCacheDir} \
-                              --ref-fasta ${refFasta} \                              
+                              --ref-fasta ${refFasta} \
                               --species ${species} \
                               --ncbi-build ${ncbiBuild} \
-                              ${"--vep-path " + vepPath} \ 
-                              ${"--maf-center " + mafCenter} \ 
                               ${"--tmp-dir " + tmpDir} \
+                              ${"--vep-path " + vepPath} \
+                              ${"--remap-chain " + remapChain} \
+                              ${"--maf-center " + mafCenter} \
                               ${"--tumor-id " + tumorId} \
                               ${"--normal-id " + normalId} \
                               ${"--vcf-tumor-id " + vcfTumorId} \
                               ${"--vcf-normal-id " + vcfNormalId} \
                               ${"--custom-enst " + customEnst} \
-                              ${"--min-hom-vaf " + minHomVaf}
+                              ${"--min-hom-vaf " + minHomVaf} \
+                              $INFOCOLS
 
        rm ${tmpDir + "/"}$(basename ${inputVCF} .vcf).vep.vcf
     }

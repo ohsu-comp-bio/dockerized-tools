@@ -12,8 +12,8 @@ task call_hotspots {
 
      command {
          # link ref files to expected location
-         ln -s ${refFasta} /mnt/;
-         ln -s ${refFastaFai} /mnt/;
+         ln -s ${refFasta} /mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa;
+         ln -s ${refFastaFai} /mnt/Homo_sapiens.GRCh37.dna.primary_assembly.fa.fai;
 
          # replace NA strings with what the algorithm expects
          sed 's/${naStringRegEx}/NA/g' ${inputMAF} > tmp.maf;
