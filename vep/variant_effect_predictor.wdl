@@ -69,13 +69,50 @@ task variant_effect_predictor {
     Boolean? json
     Boolean? gvcf
     Boolean? minimal
+
+    # filtering and qc options
+    Boolean? check_ref
+    Boolean? coding_only
+    Array[String]? chr
+    Boolean? no_intergenic
+    Boolean? pick
+    Boolean? pick_allele
+    Boolean? flag_pick
+    Boolean? flag_pick_allele
+    Boolean? per_gene
+    Array[String]? pick_order
+    Boolean? most_severe
+    Boolean? summary
+    Boolean? filter_common
+    Boolean? check_frequency
+    String? freq_pop
+    Int? freq_freq
+    String? freq_gt_lt
+    String? freq_filter
+    Boolean? allow_non_variant
+
+    Int? buffer_size
     
     command {
-       # plugins
+        # plugins
         if [ -n "${sep="," pluginArgs}" ]; then
            PLUGINS="${"--plugin " + plugin + "," + cacheDir + "/" + pluginFileName + ","}${sep="," pluginArgs}"
-        else
+        else        
            PLUGINS="${"--plugin " + plugin + "," + cacheDir + "/" + pluginFileName}"
+        fi
+
+        # chr
+        if [ -n "${sep="," chr}" ]; then
+           CHR="--chr" ${sep="," chr}"
+        else        
+           CHR=""
+        fi
+
+        # pick_order
+        if [ -n "${sep="," pick_order}" ]; then
+           PICK_ORDER="--pick_order" ${sep="," pick_order}"
+        else        
+           PICK_ORDER=""
         fi
 
         variant_effect_predictor.pl \
@@ -136,6 +173,26 @@ task variant_effect_predictor {
         ${true="--json" false="" json} \
         ${true="--gvcf" false="" gvcf} \
         ${true="--minimal" false="" minimal} \
+        ${true="--check_ref" false="" check_ref} \
+        ${true="--coding_only" false="" } \
+        $CHR \
+        ${true="--no_intergenic" false="" no_intergenic} \
+        ${true="--pick" false="" pick} \
+        ${true="--pick_allele" false="" pick_allele} \
+        ${true="--flag_pick" false="" flag_pick} \
+        ${true="--flag_pick_allele" false="" flag_pick_allele} \
+        ${true="--per_gene" false="" per_gene} \"
+        $PICK_ORDER \
+        ${true="--most_severe" false="" most_severe} \
+        ${true="--summary" false="" summary} \"
+        ${true="--filter_common" false="" filter_common} \
+        ${true="--check_frequency" false="" check_frequency} \
+        ${"--freq_pop " + freq_pop} \
+        ${"--freq_freq " + freq_freq} \
+        ${"--freq_gt_lt " + freq_gt_lt} \
+        ${"--freq_filter " + freq_filter} \
+        ${true="--allow_non_variant" false="" allow_non_variant} \
+        ${"--buffer_size " + buffer_size} \
         --output_file ${outputFileName}
     }
 
