@@ -3,7 +3,6 @@ task vcf2maf {
     File? vepAnnotatedInputVCF
     String tmpDir = "."
     File vepOfflineCacheDir
-    File? vepPath
     File refFasta
     File refFastaFai
     File? remapChain
@@ -22,7 +21,7 @@ task vcf2maf {
 
     command {
         if [ -n "${vepAnnotatedInputVCF}" ]; then
-            ln -s ${vepAnnotatedInputVCF} ${tmpDir + "/"}$(basename ${inputVCF} .vcf).vep.vcf
+            ln -s ${vepAnnotatedInputVCF} ${tmpDir}/$(basename ${inputVCF} .vcf).vep.vcf
         fi
 
         # retain extra INFO cols
@@ -38,8 +37,7 @@ task vcf2maf {
                               --ref-fasta ${refFasta} \
                               --species ${species} \
                               --ncbi-build ${ncbiBuild} \
-                              ${"--tmp-dir " + tmpDir} \
-                              ${"--vep-path " + vepPath} \
+                              --tmp-dir ${tmpDir} \
                               ${"--remap-chain " + remapChain} \
                               ${"--maf-center " + mafCenter} \
                               ${"--tumor-id " + tumorId} \
@@ -50,7 +48,7 @@ task vcf2maf {
                               ${"--min-hom-vaf " + minHomVaf} \
                               $INFOCOLS
 
-       rm ${tmpDir + "/"}$(basename ${inputVCF} .vcf).vep.vcf
+       rm ${tmpDir}/$(basename ${inputVCF} .vcf).vep.vcf
     }
 
     output {

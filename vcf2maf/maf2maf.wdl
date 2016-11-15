@@ -9,18 +9,17 @@ task maf2maf {
     String? nrmRadCol
     String? nrmVadCol
     Array[String]? retainCols
-    String vepPath = "~/vep"
-    File vepOfflineCacheDir = "~/.vep"
-    File refFasta = "~/.vep/homo_sapiens/84_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz"
-    File refFastaFai = "~/.vep/homo_sapiens/84_GRCh37/Homo_sapiens.GRCh37.75.dna.primary_assembly.fa.gz.fai"
+    File vepOfflineCacheDir
+    File refFasta
+    File refFastaFai
     String ncbiBuild = "GRCh37"
     String species = "homo_sapiens"
     String outputFilePrefix
-    String? tmpDir
+    String tmpDir = "."
 
     command {
         if [ -n '${vepAnnotatedInputVCF}' ]; then
-            ln -s ${vepAnnotatedInputVCF} ${tmpDir + "/"}$(basename ${inputMAF} .maf).vep.vcf
+            ln -s ${vepAnnotatedInputVCF} ${tmpDir}/$(basename ${inputMAF} .maf).vep.vcf
         fi
     
         # Handling the optional arrays
@@ -32,7 +31,7 @@ task maf2maf {
 
         perl /home/maf2maf.pl --input-maf ${inputMAF} \
                               --output-maf ${outputFilePrefix}.maf
-                              ${"--tmp-dir " + tmpDir} \
+                              --tmp-dir ${tmpDir} \
                               ${"--tum-depth-col " + tumDepthCol} \
                               ${"--tum-rad-col " + tumRadCol} \
                               ${"--tum-vad-col " + tumVadCol} \
@@ -41,11 +40,12 @@ task maf2maf {
                               ${"--nrm-vad-col " + nrmVadCol} \
                               ${"--custom-enst " + customEnst} \
                               $RETAIN_COLS_FLAG \
-                              --vep-path ${vepPath} \ 
                               --vep-data ${vepOfflineCacheDir} \
                               --ref-fasta ${refFasta} \                              
                               --species ${species} \
                               --ncbi-build ${ncbiBuild}
+
+       rm ${tmpDir}/$(basename ${inputVCF} .vcf).vep.vcf
     }
 
     output {
