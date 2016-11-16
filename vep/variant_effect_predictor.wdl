@@ -95,22 +95,26 @@ task variant_effect_predictor {
     
     command {
         # plugins
-        if [ -n "${sep="," pluginArgs}" ]; then
-           PLUGINS="${"--plugin " + plugin + "," + cacheDir + "/" + pluginFileName + ","}${sep="," pluginArgs}"
-        else        
-           PLUGINS="${"--plugin " + plugin + "," + cacheDir + "/" + pluginFileName}"
-        fi
+        if [ -n "${plugin}" ]; then
+            if [ -n "${sep="," pluginArgs}" ]; then
+                PLUGINS="--plugin ${plugin},${cacheDir}/${pluginFileName},${sep="," pluginArgs}"
+            else       
+                PLUGINS="--plugin ${plugin},${cacheDir}/${pluginFileName}"
+            fi
+        else
+            PLUGINS=""
+        fi 
 
         # chr
         if [ -n "${sep="," chr}" ]; then
-           CHR="--chr" ${sep="," chr}"
+           CHR="--chr ${sep="," chr}"
         else        
            CHR=""
         fi
 
         # pick_order
         if [ -n "${sep="," pick_order}" ]; then
-           PICK_ORDER="--pick_order" ${sep="," pick_order}"
+           PICK_ORDER="--pick_order ${sep="," pick_order}"
         else        
            PICK_ORDER=""
         fi
@@ -174,7 +178,7 @@ task variant_effect_predictor {
         ${true="--gvcf" false="" gvcf} \
         ${true="--minimal" false="" minimal} \
         ${true="--check_ref" false="" check_ref} \
-        ${true="--coding_only" false="" } \
+        ${true="--coding_only" false="" coding_only} \
         $CHR \
         ${true="--no_intergenic" false="" no_intergenic} \
         ${true="--pick" false="" pick} \
@@ -184,7 +188,7 @@ task variant_effect_predictor {
         ${true="--per_gene" false="" per_gene} \"
         $PICK_ORDER \
         ${true="--most_severe" false="" most_severe} \
-        ${true="--summary" false="" summary} \"
+        ${true="--summary" false="" summary} \
         ${true="--filter_common" false="" filter_common} \
         ${true="--check_frequency" false="" check_frequency} \
         ${"--freq_pop " + freq_pop} \
@@ -201,7 +205,7 @@ task variant_effect_predictor {
     }
 
     runtime {
-        docker: "vep:86"
+        docker: "vep"
     }
 }
 
